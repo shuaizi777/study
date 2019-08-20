@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: api-gateway #服务名称
+server:  
+  port: ${CONTAINER_PORT:18002} #服务端口
+eureka:
+  instance:
+    hostname: ${DOMAIN_NAME:localhost} #服务主机名称
+    #prefer-ip-address: true
+    #ip-address: 192.168.0.6
+  client:
+    serviceUrl:
+      defaultZone:  ${EUREKA_SERVER_ADDRESS:http://127.0.0.1:18001/eureka/}

@@ -1,0 +1,52 @@
+
+server:  
+  port: ${CONTAINER_PORT:18003} #服务端口
+eureka:
+  instance:
+    hostname: ${DOMAIN_NAME:localhost} #服务主机名称
+    #prefer-ip-address: true
+    #ip-address: 192.168.0.6
+  client:
+    serviceUrl:
+      defaultZone:  ${EUREKA_SERVER_ADDRESS:http://127.0.0.1:18001/eureka/}
+
+
+spring:
+  application:
+    name: study #服务名称
+  datasource:
+    name: dev
+    url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    username: root
+    password: 123456
+    druid:
+      #连接池配置
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      pool-prepared-statements: false
+      validation-query: select 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+
+
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.springms: DEBUG
+    org.springframework: INFO
+    com.talkweb: DEBUG
+    org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod: TRACE
+    org.springframework.boot.context.config.ConfigFileApplicationListener: TRACE
