@@ -11,6 +11,7 @@
     <modules>
         <module>study-basics</module>
         <module>study</module>
+        <module>study-common</module>
     </modules>
 
     <parent>
